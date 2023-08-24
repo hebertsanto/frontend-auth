@@ -10,12 +10,10 @@ input{
     border: 1px solid black;
     padding-left:10px;
     outline: none;
-    border-radius: 5px;
     &:focus{
       outline: none;
       transition: 100ms;
       border: 1px solid rgba(102, 63, 239, 0.89);
-      border-radius: 5px;
     }
 }
 label{

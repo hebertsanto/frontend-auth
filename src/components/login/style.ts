@@ -6,7 +6,5 @@ export const Span = styled.span`
 `
 export const DontHaveAccountContainer = styled.div`
   margin-top:10px;
-  a{
-    color: blue;
-  }
+  margin-bottom: 7px;
 `

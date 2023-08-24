@@ -6,7 +6,6 @@ export const ButtonLogin = styled.button`
   display: block;
   width: 100%;
   height: 40px;
-  border-radius:10px;
   color: #fff;
   cursor: pointer;
   margin-top: 10px;
