@@ -1,23 +1,22 @@
-import { ReactNode } from "react"
+import { FormEvent, ReactNode } from "react"
 import { ContainerForm } from "../container";
+import { FormContainer } from "./style";
 
 type Children = {
     children: ReactNode;
     title: string;
+    onSubmitForm: (value: FormEvent) => void;
 };
 
-export const Form = ({ children, title }: Children) => {
+export const Form = ({ children, title ,onSubmitForm}: Children) => {
     return (
         <ContainerForm>
-            <form style={{
-                padding:'20px',
-                margin: '0 auto',
-            }}>
+          <FormContainer onSubmit={onSubmitForm}>
                 <h1>{title}</h1>
                 <div>
                   {children}
                 </div>
-            </form>
+          </FormContainer>
         </ContainerForm>
     )
 }

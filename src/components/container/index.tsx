@@ -1,5 +1,5 @@
 import { ReactNode } from "react"
-import { ContainerImage, ContainerStyle } from "./style"
+import { Container, ContainerImage, ContainerStyle, SubContainer } from "./style"
 
 type Container = {
     children: ReactNode
@@ -8,12 +8,15 @@ type Container = {
 export const ContainerForm = ({ children } : Container) => {
      return(
         <ContainerStyle>
-          {children}
+          <Container>
+            <SubContainer>
+              {children}
+            </SubContainer>
+          </Container>
           <ContainerImage>
             <img 
-             src="https://img.freepik.com/vetores-gratis/ilustracao-do-conceito-de-desenvolvimento_114360-572.jpg?w=826&t=st=1692845329~exp=1692845929~hmac=9d8d765c0637869d9e4f4e831f7146b81f325bfd4745eca1c5630db314efc6f7" 
-             alt="" 
-             
+             src="https://img.freepik.com/vetores-gratis/ilustracao-rpa-abstrata-criativa_52683-79799.jpg?w=826&t=st=1692881943~exp=1692882543~hmac=d55e91c37b66a99b5cf15400271f7f1c0d2b144a414f7e92a7b90ff158a95fbc" 
+             alt="imagem complementar da tela de login" 
              />
           </ContainerImage>
         </ContainerStyle>
