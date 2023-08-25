@@ -4,7 +4,6 @@ type ButtonProps={
     content:string;
 }
 
-
 export const Button = ({ content }: ButtonProps ) => {
     return(
         <>

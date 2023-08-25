@@ -5,6 +5,7 @@ import { Button } from "../button"
 import { FormEvent } from "react"
 import { useState } from 'react'
 import { toast } from "react-toastify"
+import axios from 'axios';
 
 export const Register = () => {
     
@@ -24,6 +25,18 @@ export const Register = () => {
        return;      
     }
     setError(false)
+      axios.post('http://localhost:3000/user', {
+            name,
+            email,
+            password
+        }).then((res) => {
+           console.log(res.data)
+           if(res.data.msg === 'user already exists'){
+               return toast.warning('usuario ja existe, faça login')
+           }
+           return toast.success('usario criado com sucesso, faça login')
+        })
+          .catch((error) => console.log(error))
    };
    
     return(
