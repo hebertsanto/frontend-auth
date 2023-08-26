@@ -15,6 +15,7 @@ export const AppRoutes = () => {
               <Route path='/login' element={<Login />}/>
               <Route path='/register' element={<Register />}/>
               <Route path='/recovery-password' element={<RecoveryPassword />}/>
+              <Route path='/dashboard' element={<div><h1>parabéns voce foi logado!</h1></div>}/>
               <Route path='*' element={<h1>rota não existe</h1>}/>
            </Routes>
            <GlobalStyle />

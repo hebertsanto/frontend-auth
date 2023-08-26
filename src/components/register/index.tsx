@@ -1,18 +1,18 @@
-import { Link } from "react-router-dom"
-import { Form } from "../form"
-import { Input } from "../input"
-import { Button } from "../button"
-import { FormEvent } from "react"
-import { useState } from 'react'
-import { toast } from "react-toastify"
-import axios from 'axios';
+import { Link } from "react-router-dom";
+import { Form } from "../form";
+import { Input } from "../input";
+import { Button } from "../button";
+import { FormEvent } from "react";
+import { useState } from 'react';
+import { toast } from "react-toastify";
+import { baseUrl } from "../../service/baseUrl";
 
 export const Register = () => {
     
-  const [name, setName] = useState<string>('')
-  const [email, setEmail] = useState<string>('')
-  const [password, setPassword] = useState<string>('')
-  const [confirmPassword, setConfirmPassword] = useState<string>('')
+  const [name, setName] = useState<string>('');
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const [confirmPassword, setConfirmPassword] = useState<string>('');
 
   const [error, setError] = useState(false);
 
@@ -21,22 +21,22 @@ export const Register = () => {
     
     if(!name || !email || !password || !confirmPassword){
        setError(true);
-       toast.error('preencha os campos necessários')
+       toast.error('preencha os campos necessários');
        return;      
     }
     setError(false)
-      axios.post('http://localhost:3000/user', {
+      baseUrl.post('/user', {
             name,
             email,
             password
         }).then((res) => {
-           console.log(res.data)
+           console.log(res.data);
            if(res.data.msg === 'user already exists'){
-               return toast.warning('usuario ja existe, faça login')
+               return toast.warning('usuario ja existe, faça login');
            }
-           return toast.success('usario criado com sucesso, faça login')
+           return toast.success('usario criado com sucesso, faça login');
         })
-          .catch((error) => console.log(error))
+          .catch((error) => console.log(error));
    };
    
     return(

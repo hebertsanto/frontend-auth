@@ -1,11 +1,11 @@
-import { Link } from "react-router-dom"
-import { Form } from "../form"
-import { Input } from "../input"
-import { DontHaveAccountContainer, Span} from "./style"
-import { Button } from "../button"
-import { FormEvent, useState } from "react"
-import { toast } from 'react-toastify'
-
+import { Link , useNavigate } from "react-router-dom";
+import { Form } from "../form";
+import { Input } from "../input";
+import { DontHaveAccountContainer, Span} from "./style";
+import { Button } from "../button";
+import { FormEvent, useState } from "react";
+import { toast } from 'react-toastify';
+import { baseUrl } from "../../service/baseUrl";
 
 export const Login = () => {
 
@@ -17,6 +17,7 @@ export const Login = () => {
     const regexEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
     const [error, setError] = useState(false);
+    const navigate = useNavigate();
 
     const validateEmail = (email:string) => {
         if(!regexEmail.test(email)){
@@ -25,7 +26,6 @@ export const Login = () => {
              return;
         }
         setError(false);
-        console.log(email, 'valido')
     };
 
     const submitFormLogin  = (e : FormEvent) => {
@@ -41,7 +41,24 @@ export const Login = () => {
         setErrorEmail(false);
         setErrorPassword(false);
         validateEmail(email);
+        
+        baseUrl.post('/login',{
+            email,
+            password
+        })
+        .then((res) => {
+            const token = res.data.token;
+            
+            if(token){
+                 navigate('/dashboard')
+                 return toast.success('logado com sucesso');
+            }
+            setErrorEmail(true);
+            setErrorPassword(true);
+            return toast.error('usuario ou senha inválidos')
 
+        })
+        .catch((err) => console.error(err))
     };
 
     return(
