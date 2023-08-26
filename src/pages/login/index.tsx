@@ -52,17 +52,14 @@ export const Login = () => {
             
             if(token){
                 setLoading(true);
-                setTimeout(() => {
-                    navigate('/dashboard')
+                    navigate('/app/dashboard')
+                    console.log(token);
                     return toast.success('logado com sucesso');
-                }, 3000)
             }else{
                 setErrorEmail(true);
                 setErrorPassword(true);
                 toast.error('usuario ou senha inválidos')
             }
-           
-
         })
         .catch((err) => console.error(err))
     };
