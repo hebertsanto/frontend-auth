@@ -1,7 +1,7 @@
 import { FormEvent, useState } from "react";
-import { Button } from "../button"
-import { Form } from "../form"
-import { Input } from "../input"
+import { Button } from "../../components/button";
+import { Form } from "../../components/form";
+import { Input } from "../../components/input";
 import { toast } from "react-toastify";
 
 export const RecoveryPassword = () => {
@@ -33,9 +33,9 @@ export const RecoveryPassword = () => {
                 border: error ? '1px solid red' : '1px solid'
              }}
             />
-            <Button 
-             content="recuperar sua senha"
-             />
+            <Button>
+                Recuperar senha
+            </Button>
         </Form>
     )
 }

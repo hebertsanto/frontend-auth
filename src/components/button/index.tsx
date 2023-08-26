@@ -1,14 +1,15 @@
+import { ReactNode } from "react";
 import { ButtonLogin } from "./style";
 
 type ButtonProps={
-    content:string;
+    children:ReactNode
 }
 
-export const Button = ({ content }: ButtonProps ) => {
+export const Button = ({ children }: ButtonProps ) => {
     return(
         <>
          <ButtonLogin>
-            {content}
+            {children}
          </ButtonLogin>
         </>
     )

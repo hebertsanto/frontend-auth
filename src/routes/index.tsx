@@ -1,8 +1,8 @@
 import {BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import { Login } from '../components/login'
-import { Register } from '../components/register'
+import { Login } from '../pages/login'
+import { Register } from '../pages/register'
 import { GlobalStyle } from '../global'
-import { RecoveryPassword } from '../components/recovery-password'
+import { RecoveryPassword } from '../pages/recovery-password'
 import { Index } from '../Index'
 
 

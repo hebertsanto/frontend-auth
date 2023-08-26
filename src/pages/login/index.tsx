@@ -1,11 +1,12 @@
 import { Link , useNavigate } from "react-router-dom";
-import { Form } from "../form";
-import { Input } from "../input";
+import { Form } from "../../components/form";
+import { Input } from "../../components/input";
 import { DontHaveAccountContainer, Span} from "./style";
-import { Button } from "../button";
+import { Button } from "../../components/button";
 import { FormEvent, useState } from "react";
 import { toast } from 'react-toastify';
 import { baseUrl } from "../../service/baseUrl";
+import { SpinnerLoad } from "../../components/spinner";
 
 export const Login = () => {
 
@@ -15,7 +16,7 @@ export const Login = () => {
     const [errorEmail, setErrorEmail] = useState(false);
     const [errorPassword, setErrorPassword] = useState(false);
     const regexEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
+    const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
     const navigate = useNavigate();
 
@@ -50,12 +51,17 @@ export const Login = () => {
             const token = res.data.token;
             
             if(token){
-                 navigate('/dashboard')
-                 return toast.success('logado com sucesso');
+                setLoading(true);
+                setTimeout(() => {
+                    navigate('/dashboard')
+                    return toast.success('logado com sucesso');
+                }, 3000)
+            }else{
+                setErrorEmail(true);
+                setErrorPassword(true);
+                toast.error('usuario ou senha inválidos')
             }
-            setErrorEmail(true);
-            setErrorPassword(true);
-            return toast.error('usuario ou senha inválidos')
+           
 
         })
         .catch((err) => console.error(err))
@@ -88,7 +94,9 @@ export const Login = () => {
                 border: errorPassword ? '1px solid red': '1px solid'
               }}
             />
-            <Button content="Entrar"/>
+            <Button>
+                {loading ? <SpinnerLoad /> : 'Entrar'}
+            </Button>
             <DontHaveAccountContainer>
              <Span>ainda não tem uma conta?</Span>
              <Link to='/register'>cadastrar</Link>

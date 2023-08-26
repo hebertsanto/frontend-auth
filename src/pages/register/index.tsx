@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import { Form } from "../form";
-import { Input } from "../input";
-import { Button } from "../button";
+import { Form } from "../../components/form";
+import { Input } from "../../components/input";
+import { Button } from "../../components/button";
 import { FormEvent } from "react";
 import { useState } from 'react';
 import { toast } from "react-toastify";
@@ -12,14 +12,12 @@ export const Register = () => {
   const [name, setName] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
-  const [confirmPassword, setConfirmPassword] = useState<string>('');
-
   const [error, setError] = useState(false);
 
   const submitFormRegister = (e : FormEvent) => {
     e.preventDefault();
     
-    if(!name || !email || !password || !confirmPassword){
+    if(!name || !email || !password){
        setError(true);
        toast.error('preencha os campos necessários');
        return;      
@@ -33,8 +31,9 @@ export const Register = () => {
            console.log(res.data);
            if(res.data.msg === 'user already exists'){
                return toast.warning('usuario ja existe, faça login');
+           }else{
+              return toast.success('usario criado com sucesso, faça login');
            }
-           return toast.success('usario criado com sucesso, faça login');
         })
           .catch((error) => console.log(error));
    };
@@ -74,18 +73,9 @@ export const Register = () => {
                 border: error ? '1px solid red': '1px solid'
                }}
             />
-              <Input 
-               inputPlaceholder="confirme a senha"
-               inputType="password"
-               labelName="confirme sua senha"
-               labelType="password"
-               onChangeInput={(e) => setConfirmPassword(e.target.value)}
-               value={confirmPassword}
-               style={{
-                border: error ? '1px solid red': '1px solid'
-               }}
-            />
-            <Button content="Criar conta"/>
+            <Button>
+               Cadastrar
+            </Button>
               <span style={{fontSize:'0.9rem'}}>já tem uma conta?</span>
             <Link to='/login'>entrar</Link>
         </Form>
