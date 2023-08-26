@@ -21,7 +21,11 @@ export const Documents = () => {
 
     return (
         <div>
-            <h3>Todos os seus documentos</h3>
+            <h1>Meus Documentos</h1>
+            
+            <span style={{
+                fontSize:'0.9rem'
+            }}>recentes</span>
             <DocumentCardContainer>
                 {documents.map(docs =>
                     <DocumentCard>

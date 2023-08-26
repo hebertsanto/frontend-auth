@@ -6,5 +6,4 @@ export const DashboardStyle = styled.div`
 `
 export const MainContainer = styled.div`
  display: flex;
- gap: 40px;
 `

@@ -13,8 +13,8 @@ export const Dashboard = () => {
                 style={{
                     width:'80%',
                     padding:'20px',
-                    borderRadius:'20px',
-                    boxShadow:'4px 6px 4px 4px gainsboro',
+                    borderRadius:'10px',
+                    boxShadow:'4px 4px 4px 4px gainsboro',
                     backgroundColor:'#fff'
                 }}
                >

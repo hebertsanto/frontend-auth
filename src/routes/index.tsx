@@ -7,6 +7,7 @@ import { Index } from '../Index'
 import { Dashboard } from '../pages/dashboard'
 import { Documents } from '../pages/documents'
 import { DocumentId } from '../pages/documentsID'
+import { Trash } from '../components/trash'
 
 
 export const AppRoutes = () => {
@@ -22,6 +23,7 @@ export const AppRoutes = () => {
                 <Route path='/app/dashboard' element={<p>grafico de uso do sistema</p>}/>
                 <Route path='/app/dashboard/documents' element={<Documents />}/>
                 <Route path='/app/dashboard/documents/:id' element={<DocumentId />}/>
+                <Route path='/app/dashboard/trash' element={<Trash/>}/>
               </Route>
               <Route path='*' element={<h1>rota não existe</h1>}/>
            </Routes>
