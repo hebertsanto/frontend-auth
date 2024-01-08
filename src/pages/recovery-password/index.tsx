@@ -6,16 +6,17 @@ import { toast } from "react-toastify";
 
 export const RecoveryPassword = () => {
     
-    const [emailRecovery, setEmailRecovery] = useState<string>('');
-    const [error, setError] = useState(false);
+  const [emailRecovery, setEmailRecovery] = useState<string>('');
+  const [error, setError] = useState(false);
+  const emailRegex = /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+\.([a-z]+)?$/i;
+  
+  const submitFormRecoveryPassword  = (e : FormEvent) => {
+     e.preventDefault();
 
-    const submitFormRecoveryPassword  = (e : FormEvent) => {
-        e.preventDefault();
-
-        if(!emailRecovery){
-            toast.error('por favor preencha o campo com seu email')
-            setError(true);
-            return;
+      if(!emailRecovery){
+        toast.error('por favor preencha o campo com seu email')
+        setError(true);
+        return;
         }
         setError(false);
     };
@@ -29,9 +30,7 @@ export const RecoveryPassword = () => {
              labelType="email"
              onChangeInput={(e) => setEmailRecovery(e.target.value)}
              value={emailRecovery}
-             style={{
-                border: error ? '1px solid red' : '1px solid'
-             }}
+             style={{ border: error && '1px solid red' }}
             />
             <Button>
                 Recuperar senha

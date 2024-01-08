@@ -3,29 +3,21 @@ import { Login } from '../pages/login'
 import { Register } from '../pages/register'
 import { GlobalStyle } from '../global'
 import { RecoveryPassword } from '../pages/recovery-password'
-import { Index } from '../Index'
 import { Dashboard } from '../pages/dashboard'
-import { Documents } from '../pages/documents'
-import { DocumentId } from '../pages/documentsID'
-import { Trash } from '../components/trash'
-
-
+import { Navigate } from 'react-router-dom'
 export const AppRoutes = () => {
 
     return (
         <Router>
            <Routes>
-              <Route path='/' element ={<Index />}/>
+              <Route path='/' element={ <Navigate to={'/login' } replace/> }/>
               <Route path='/login' element={<Login />}/>
               <Route path='/register' element={<Register />}/>
               <Route path='/recovery-password' element={<RecoveryPassword />}/>
-              <Route path='/app/dashboard' element={<Dashboard />}>
-                <Route path='/app/dashboard' element={<p>grafico de uso do sistema</p>}/>
-                <Route path='/app/dashboard/documents' element={<Documents />}/>
-                <Route path='/app/dashboard/documents/:id' element={<DocumentId />}/>
-                <Route path='/app/dashboard/trash' element={<Trash/>}/>
+              <Route path='/dashboard' element={<Dashboard />}>
+                <Route path='/dashboard' element={<p>grafico de uso do sistema</p>}/>
               </Route>
-              <Route path='*' element={<h1>rota não existe</h1>}/>
+              <Route path='*' element={<h1>essa rota não existe</h1>}/>
            </Routes>
            <GlobalStyle />
         </Router>

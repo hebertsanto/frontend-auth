@@ -18,6 +18,7 @@ export const Login = () => {
     const regexEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
+
     const navigate = useNavigate();
 
     const validateEmail = (email:string) => {
@@ -37,6 +38,7 @@ export const Login = () => {
             setErrorEmail(true);
             setErrorPassword(true);
             toast.error('por favor preecha todos os campos necessários')
+            navigate('/login?=LoginError')
             return;
         }
         setErrorEmail(false);
@@ -66,7 +68,7 @@ export const Login = () => {
 
     return(
 
-        <Form title="Entrar no sistema" onSubmitForm={submitFormLogin}>
+        <Form title="Faça seu login no sistema" onSubmitForm={submitFormLogin}>
            {error && <div style={{color:'#fff', backgroundColor:'rgba(245, 18, 18, 0.95)', padding:'10px'}}>email invalido</div>}
            <Input
               inputPlaceholder="digite seu email"
@@ -76,7 +78,8 @@ export const Login = () => {
               onChangeInput={(e) => setEmail(e.target.value)}
               value={email}
               style={{
-                 border: errorEmail ? '1px solid red': '1px solid'
+                 border: errorEmail && '1px solid red'
+
               }}
               
               />
@@ -88,7 +91,7 @@ export const Login = () => {
               onChangeInput={(e) => setPassword(e.target.value)}
               value={password}
               style={{
-                border: errorPassword ? '1px solid red': '1px solid'
+                border: errorPassword && '1px solid red',
               }}
             />
             <Button>

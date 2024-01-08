@@ -48,7 +48,7 @@ export const Register = () => {
                onChangeInput={(e) => setName(e.target.value)}
                value={name}
                style={{
-                border: error ? '1px solid red': '1px solid'
+                border: error && '1px solid red'
                }}
             />
              <Input 
@@ -59,7 +59,7 @@ export const Register = () => {
                onChangeInput={(e) => setEmail(e.target.value)}
                value={email}
                style={{
-                border: error ? '1px solid red': '1px solid'
+                border: error && '1px solid red'
                }}
             />
                <Input 
@@ -70,7 +70,7 @@ export const Register = () => {
                onChangeInput={(e) => setPassword(e.target.value)}
                value={password}
                style={{
-                border: error ? '1px solid red': '1px solid'
+                border: error && '1px solid red'
                }}
             />
             <Button>
