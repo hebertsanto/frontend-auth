@@ -7,13 +7,14 @@ input{
     display: block;
     width: 100%;
     height: 35px;
-    border: 1px solid black;
+    border: 1px solid rgba(130, 130, 130, 980);
     padding-left:10px;
+    border-radius:4px;
     outline: none;
     &:focus{
       outline: none;
       transition: 100ms;
-      border: 1px solid rgba(102, 63, 239, 0.89);
+      border: 1px solid blue;
     }
 }
 label{
@@ -22,3 +23,7 @@ label{
     margin-bottom:7px;
 }
 `
+
+export const Input = styled.input`
+
+`;
