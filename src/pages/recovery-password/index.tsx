@@ -8,7 +8,6 @@ export const RecoveryPassword = () => {
     
   const [emailRecovery, setEmailRecovery] = useState<string>('');
   const [error, setError] = useState(false);
-  const emailRegex = /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+\.([a-z]+)?$/i;
   
   const submitFormRecoveryPassword  = (e : FormEvent) => {
      e.preventDefault();
